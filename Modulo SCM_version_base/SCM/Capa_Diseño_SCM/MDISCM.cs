@@ -106,7 +106,7 @@ namespace Capa_Diseño_SCM
             }
         }
         bool ventanaConceptos = false;
-        Frm_MantPercepciones conceptos = new Frm_MantPercepciones("");
+        Frm_MantPercepciones conceptos = new Frm_MantPercepciones("","");
         private void PercepcionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is Frm_MantPercepciones);
@@ -114,7 +114,7 @@ namespace Capa_Diseño_SCM
             {
                 if (frmC == null)
                 {
-                    conceptos = new Frm_MantPercepciones(susuario);
+                    conceptos = new Frm_MantPercepciones(susuario,"");
                 }
 
                 conceptos.MdiParent = this;

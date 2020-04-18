@@ -26,7 +26,7 @@ namespace CapaDiseño.Mantenimientos
         string suser;
         string tipopermiso= "1001";
 
-        public Frm_MantPercepciones(String susuario)
+        public Frm_MantPercepciones(String susuario, String tipo)
         {
             InitializeComponent();
             scampo = logic.siguiente("concepto", "pkcodigoconcepto");
