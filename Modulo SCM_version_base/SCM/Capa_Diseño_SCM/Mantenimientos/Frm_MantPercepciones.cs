@@ -40,6 +40,7 @@ namespace CapaDiseño.Mantenimientos
             this.StartPosition = FormStartPosition.CenterParent;
             this.Text = "Percepciones";
             Txt_Cod.Text = scampo;
+	tipopermiso=tipo;
         }
         /*---------------------------------------------------Codigo general------------------------------------------------------------------------------------------*/
         public void obtenerip()
