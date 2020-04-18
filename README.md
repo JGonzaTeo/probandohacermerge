@@ -1,2 +1,1 @@
-# probandohacermerge
-de scrum
+# Seguridad de  HRM scrum
