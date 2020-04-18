@@ -12,7 +12,7 @@ namespace Capa_Datos_SCM
         Conexion cn = new Conexion();
         OdbcCommand comm;
 //--------------------------------------------------------------------Metodos General--------------------------------------------------------------------//
-        public string obtenerfinal(string tabla, string campo)
+        public string obtenerfinal2(string tabla, string campo)
         {
             String camporesultante = "";
             try
