@@ -578,7 +578,7 @@ namespace CapaDiseño
 
 
         bool ventanaJornada = false;
-        Frm_MantJornada jornadas = new Frm_MantJornada("");
+        Frm_MantJornada jornadas = new Frm_MantJornada("","");
         private void jornadasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is Frm_MantJornada);
@@ -586,7 +586,7 @@ namespace CapaDiseño
             {
                 if (frmC == null)
                 {
-                    jornadas = new Frm_MantJornada(susuario);
+                    jornadas = new Frm_MantJornada(susuario,tipopermiso);
                 }
 
                 jornadas.MdiParent = this;
