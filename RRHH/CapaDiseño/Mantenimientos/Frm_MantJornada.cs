@@ -54,17 +54,19 @@ namespace CapaDiseño.Mantenimientos
             suser = susuario;
             Cbo_estadoJornada.Items.Add("Activo");
             Cbo_estadoJornada.Items.Add("Inactivo");
-
-           
-        }
- public void bloqueartxt()
-        {
-            /*------------------------*/
+  	   /*------------------------*/
             Btn_guardar.Enabled = false;
             Btn_editar.Enabled = false;
             Btn_borrar.Enabled = false;
 	    Btn_consultar.Enabled = false;
             /*------------------------*/
+	   bloqueartxt();
+
+           
+        }
+ public void bloqueartxt()
+        {
+          
             Txt_codigoJornada.Enabled = false;
             Txt_nombreJornada.Enabled = false;
             Txt_horasJornada.Enabled = false;
@@ -72,12 +74,7 @@ namespace CapaDiseño.Mantenimientos
         }
         public void desbloqueartxt()
         {
-            /*------------------------*/
-            Btn_guardar.Enabled = true;
-            Btn_editar.Enabled = true;
-            Btn_borrar.Enabled = true;
-	    Btn_consultar.Enabled = true;
-            /*------------------------*/            
+          
             Txt_codigoJornada.Enabled = true;
             Txt_nombreJornada.Enabled = true;
             Txt_horasJornada.Enabled = true;
