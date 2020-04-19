@@ -57,14 +57,15 @@ namespace CapaDiseño.Mantenimientos
             bloqueartxt();
 	    scampo = logic.siguiente("mediodecomunicacion", "pkmediodecomunicacion");
             Txt_Codigo.Text = scampo;
-        }
-	public void bloqueartxt()
-        {
-            /*------------------------*/
+	    /*------------------------*/
             Btn_guardar.Enabled = false;
             Btn_editar.Enabled = false;
             Btn_borrar.Enabled = false;
             /*------------------------*/
+        }
+	public void bloqueartxt()
+        {
+            
             Txt_Codigo.Enabled = false;
             Cbo_Contrato.Enabled = false;
             Cbo_Estado.Enabled = false;
@@ -72,12 +73,7 @@ namespace CapaDiseño.Mantenimientos
             Cbo_Proyecto.Enabled = false;
         }
         public void desbloqueartxt()
-        {
-            /*------------------------*/
-            Btn_guardar.Enabled = true;
-            Btn_editar.Enabled = true;
-            Btn_borrar.Enabled = true;
-            /*------------------------*/            
+        {           
             Txt_Codigo.Enabled = true;
             Cbo_Contrato.Enabled = true;
             Cbo_Estado.Enabled = true;
@@ -201,6 +197,7 @@ namespace CapaDiseño.Mantenimientos
             OdbcDataReader cita = logic.ModificarTC(Txt_Codigo.Text, Cbo_Contrato.Text, Cbo_Mes.Text, Cbo_Proyecto.Text, Cbo_Estado.Text);
             MessageBox.Show("Datos modificados correctamente.");
             logic.bitacora("0", slocalIP, smacAddresses, suser, "RRHH", DateTime.Now.ToString("G"), "Modificar", this.GetType().Name);
+	    limpiar();
         }
 
         private void Btn_guardar_Click(object sender, EventArgs e)
@@ -208,7 +205,7 @@ namespace CapaDiseño.Mantenimientos
             OdbcDataReader cita = logic.InsertarMC(Cbo_Contrato.Text, Cbo_Mes.Text, Cbo_Proyecto.Text, Cbo_Estado.Text);
             MessageBox.Show("Datos insertar correctamente.");
             logic.bitacora("0", slocalIP, smacAddresses, suser, "RRHH", DateTime.Now.ToString("G"), "Guardar", this.GetType().Name);
-
+	    limpiar();
         }
 
         private void Btn_borrar_Click(object sender, EventArgs e)
@@ -216,7 +213,7 @@ namespace CapaDiseño.Mantenimientos
             OdbcDataReader cita = logic.eliminarEmpleado(Txt_Codigo.Text);
             MessageBox.Show("Eliminado Correctamente.");
             logic.bitacora("0", slocalIP, smacAddresses, suser, "RRHH", DateTime.Now.ToString("G"), "Eliminar", this.GetType().Name);
-
+	    limpiar();
         }
 
         private void Btn_consultar_Click(object sender, EventArgs e)
