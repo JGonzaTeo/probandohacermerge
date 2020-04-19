@@ -554,7 +554,7 @@ namespace CapaDiseño
         }
 
         bool ventanaCurriculum = false;
-        Frm_MantCurriculum curriculum = new Frm_MantCurriculum("");
+        Frm_MantCurriculum curriculum = new Frm_MantCurriculum("","");
         private void CurriculumToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is Frm_MantCurriculum);
@@ -562,7 +562,7 @@ namespace CapaDiseño
             {
                 if (frmC == null)
                 {
-                    curriculum = new Frm_MantCurriculum(susuario);
+                    curriculum = new Frm_MantCurriculum(susuario,tipopermiso);
                 }
 
                 curriculum.MdiParent = this;
