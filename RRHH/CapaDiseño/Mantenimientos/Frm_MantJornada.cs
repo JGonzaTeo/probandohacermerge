@@ -23,7 +23,8 @@ namespace CapaDiseño.Mantenimientos
         string slocalIP;
         string smacAddresses;
         string suser;
-        
+        string tipopermiso;
+	tipopermiso=permiso;
           
         public void obtenerip()
         {
@@ -53,11 +54,86 @@ namespace CapaDiseño.Mantenimientos
             suser = susuario;
             Cbo_estadoJornada.Items.Add("Activo");
             Cbo_estadoJornada.Items.Add("Inactivo");
+  	   /*------------------------*/
+            Btn_guardar.Enabled = false;
+            Btn_editar.Enabled = false;
+            Btn_borrar.Enabled = false;
+	    Btn_consultar.Enabled = false;
+            /*------------------------*/
+	   bloqueartxt();
 
+           
+        }
+ public void bloqueartxt()
+        {
+          
             Txt_codigoJornada.Enabled = false;
             Txt_nombreJornada.Enabled = false;
             Txt_horasJornada.Enabled = false;
             Cbo_estadoJornada.Enabled = false;
+        }
+        public void desbloqueartxt()
+        {
+          
+            Txt_codigoJornada.Enabled = true;
+            Txt_nombreJornada.Enabled = true;
+            Txt_horasJornada.Enabled = true;
+            Cbo_estadoJornada.Enabled = true;
+        }
+        public void limpiar()
+        {
+            TTxt_codigoJornada.Text = "";
+            Txt_nombreJornada.Text = "";
+            Txt_horasJornada.Text = "";
+            Cbo_estadoJornada.Tex = "";
+        }
+
+public void permisos()
+        {
+            if (tipopermiso == "1111")
+            {
+                //todos
+                Btn_guardar.Enabled = true;
+                Btn_editar.Enabled = true;
+                Btn_borrar.Enabled = true;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "1001")
+            {
+                //Guardar
+                Btn_guardar.Enabled = true;
+                Btn_editar.Enabled = false;
+                Btn_borrar.Enabled = false;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "0101")
+            {
+                //modificar
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = true;
+                Btn_borrar.Enabled = false;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "0011")
+            {
+                //eliminar
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = false;
+                Btn_borrar.Enabled = true;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "0001")
+            {
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = false;
+                Btn_borrar.Enabled = false;
+                Btn_ingresar.Enabled = false;
+                Btn_consultar.Enabled = true;
+            }
         }
 
         private void Btn_minimizar_Click(object sender, EventArgs e)
@@ -94,10 +170,7 @@ namespace CapaDiseño.Mantenimientos
 
         private void Btn_ingresar_Click(object sender, EventArgs e)
         {
-            Txt_codigoJornada.Enabled = true;
-            Txt_nombreJornada.Enabled = true;
-            Txt_horasJornada.Enabled = true;
-            Cbo_estadoJornada.Enabled = true;
+            tipopermiso();
         }
 
         private void Btn_editar_Click(object sender, EventArgs e)
@@ -105,6 +178,7 @@ namespace CapaDiseño.Mantenimientos
             OdbcDataReader jornada = logic.modificarJornada(Txt_codigoJornada.Text, Txt_nombreJornada.Text, Txt_horasJornada.Text, Cbo_estadoJornada.Text);
             MessageBox.Show("Datos modificados correctamente.");
             logic.bitacora("0", slocalIP, smacAddresses, suser, "RRHH", DateTime.Now.ToString("G"), "Modificar", this.GetType().Name);
+	    limpiar();
 
         }
 
@@ -113,6 +187,7 @@ namespace CapaDiseño.Mantenimientos
             OdbcDataReader jornada = logic.insertarJornada(Txt_codigoJornada.Text, Txt_nombreJornada.Text, Txt_horasJornada.Text, Cbo_estadoJornada.Text);
             MessageBox.Show("Datos registrados.");
             logic.bitacora("0", slocalIP, smacAddresses, suser, "RRHH", DateTime.Now.ToString("G"), "Guardar", this.GetType().Name);
+	    limpiar();
 
         }
 
@@ -121,7 +196,7 @@ namespace CapaDiseño.Mantenimientos
             OdbcDataReader jornada = logic.eliminarJornada(Txt_codigoJornada.Text);
             MessageBox.Show("Eliminado Correctamentee.");
             logic.bitacora("0", slocalIP, smacAddresses, suser, "RRHH", DateTime.Now.ToString("G"), "Eliminar", this.GetType().Name);
-
+	    limpiar();
         }
 
         private void Btn_consultar_Click(object sender, EventArgs e)
