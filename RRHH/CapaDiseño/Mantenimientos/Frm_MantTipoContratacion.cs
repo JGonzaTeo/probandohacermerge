@@ -46,7 +46,7 @@ namespace CapaDiseño.Mantenimientos
                 }
             }
         }
-        public Frm_MantTipoContratacion(String susuario)
+        public Frm_MantTipoContratacion(String susuario, String permiso)
         {
             InitializeComponent();
             obtenerip();
@@ -72,6 +72,7 @@ namespace CapaDiseño.Mantenimientos
             Cbo_Estado.Enabled = false;
             Cbo_Mes.Enabled =  false;
             Cbo_Proyecto.Enabled = false;
+            Cbo_Estado.Enabled = false;
         }
         public void desbloqueartxt()
         {           
@@ -81,17 +82,17 @@ namespace CapaDiseño.Mantenimientos
             Cbo_Mes.Enabled = true;
             Cbo_Proyecto.Enabled = true;
 
-            Cbo_estado.Enabled = true;
+            Cbo_Estado.Enabled = true;
         }
         public void limpiar()
         {
-            Txt_IdP.Text = " ";
-            Txt_nombre.Text = " ";
-            Txt_Direccion.Text = " ";
-            Txt_Telefono.Text = " ";
-            Txt_Email.Text = " ";
-            Txt_Nit.Text = " ";
-            Cbo_estado.Text = " ";
+            Txt_Codigo.Text = "";
+            Cbo_Contrato.Text = "";
+            Cbo_Estado.Text = "";
+            Cbo_Mes.Text = "";
+            Cbo_Proyecto.Text = "";
+
+            Cbo_Estado.Text = "";
         }
 	public void permisos()
         {
@@ -102,7 +103,7 @@ namespace CapaDiseño.Mantenimientos
                 Btn_editar.Enabled = true;
                 Btn_borrar.Enabled = true;
                 Btn_consultar.Enabled = true;
-                desbloquear();
+                desbloqueartxt();
             }
             if (tipopermiso == "1001")
             {
@@ -111,7 +112,7 @@ namespace CapaDiseño.Mantenimientos
                 Btn_editar.Enabled = false;
                 Btn_borrar.Enabled = false;
                 Btn_consultar.Enabled = true;
-                desbloquear();
+                desbloqueartxt();
             }
             if (tipopermiso == "0101")
             {
@@ -120,7 +121,7 @@ namespace CapaDiseño.Mantenimientos
                 Btn_editar.Enabled = true;
                 Btn_borrar.Enabled = false;
                 Btn_consultar.Enabled = true;
-                desbloquear();
+                desbloqueartxt();
             }
             if (tipopermiso == "0011")
             {
@@ -129,7 +130,7 @@ namespace CapaDiseño.Mantenimientos
                 Btn_editar.Enabled = false;
                 Btn_borrar.Enabled = true;
                 Btn_consultar.Enabled = true;
-                desbloquear();
+                desbloqueartxt();
             }
             if (tipopermiso == "0001")
             {

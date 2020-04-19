@@ -250,3 +250,14 @@ C:\Users\ISIS\Downloads\Revisiones\fork inge\Bienestar-SCRUM\RRHH\CapaLogica\obj
 C:\Users\ISIS\Downloads\Revisiones\fork inge\Bienestar-SCRUM\RRHH\CapaLogica\obj\Debug\CapaLogica.csproj.CopyComplete
 C:\Users\ISIS\Downloads\Revisiones\fork inge\Bienestar-SCRUM\RRHH\CapaLogica\obj\Debug\CapaLogica.dll
 C:\Users\ISIS\Downloads\Revisiones\fork inge\Bienestar-SCRUM\RRHH\CapaLogica\obj\Debug\CapaLogica.pdb
+C:\Users\ISIS\Desktop\2020\1er Semestre\Ing. Software\MERGE2\probandohacermerge\RRHH\CapaLogica\bin\Debug\CapaLogica.dll
+C:\Users\ISIS\Desktop\2020\1er Semestre\Ing. Software\MERGE2\probandohacermerge\RRHH\CapaLogica\bin\Debug\CapaLogica.pdb
+C:\Users\ISIS\Desktop\2020\1er Semestre\Ing. Software\MERGE2\probandohacermerge\RRHH\CapaLogica\bin\Debug\CapaDatos.dll
+C:\Users\ISIS\Desktop\2020\1er Semestre\Ing. Software\MERGE2\probandohacermerge\RRHH\CapaLogica\bin\Debug\itextsharp.dll
+C:\Users\ISIS\Desktop\2020\1er Semestre\Ing. Software\MERGE2\probandohacermerge\RRHH\CapaLogica\bin\Debug\CapaDatos.pdb
+C:\Users\ISIS\Desktop\2020\1er Semestre\Ing. Software\MERGE2\probandohacermerge\RRHH\CapaLogica\bin\Debug\itextsharp.xml
+C:\Users\ISIS\Desktop\2020\1er Semestre\Ing. Software\MERGE2\probandohacermerge\RRHH\CapaLogica\obj\Debug\CapaLogica.csprojAssemblyReference.cache
+C:\Users\ISIS\Desktop\2020\1er Semestre\Ing. Software\MERGE2\probandohacermerge\RRHH\CapaLogica\obj\Debug\CapaLogica.csproj.CoreCompileInputs.cache
+C:\Users\ISIS\Desktop\2020\1er Semestre\Ing. Software\MERGE2\probandohacermerge\RRHH\CapaLogica\obj\Debug\CapaLogica.csproj.CopyComplete
+C:\Users\ISIS\Desktop\2020\1er Semestre\Ing. Software\MERGE2\probandohacermerge\RRHH\CapaLogica\obj\Debug\CapaLogica.dll
+C:\Users\ISIS\Desktop\2020\1er Semestre\Ing. Software\MERGE2\probandohacermerge\RRHH\CapaLogica\obj\Debug\CapaLogica.pdb

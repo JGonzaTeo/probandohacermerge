@@ -22,8 +22,9 @@ namespace CapaDiseño.Mantenimientos
         string smacAddresses;
         string suser;
         Logica logic = new Logica();
+        string tipopermiso;
 
-        public Frm_MantMeta(string usuario)
+        public Frm_MantMeta(string usuario, String permiso)
         {
             InitializeComponent();
             bloqueartxt();
@@ -32,12 +33,14 @@ namespace CapaDiseño.Mantenimientos
             Cbo_Estado.Items.Add("Activo");
             Cbo_Estado.Items.Add("Inactivo");
             suser = usuario;
+            tipopermiso = permiso;
 	     /*------------------------*/
             Btn_guardar.Enabled = false;
             Btn_editar.Enabled = false;
             Btn_borrar.Enabled = false;
 	    Btn_consultar.Enabled = true;
             /*------------------------*/
+            desbloqueartxt();
 
         }
 
@@ -120,7 +123,7 @@ namespace CapaDiseño.Mantenimientos
                 Btn_editar.Enabled = true;
                 Btn_borrar.Enabled = true;
                 Btn_consultar.Enabled = true;
-                desbloquear();
+                desbloqueartxt();
             }
             if (tipopermiso == "1001")
             {
@@ -129,7 +132,7 @@ namespace CapaDiseño.Mantenimientos
                 Btn_editar.Enabled = false;
                 Btn_borrar.Enabled = false;
                 Btn_consultar.Enabled = true;
-                desbloquear();
+                desbloqueartxt();
             }
             if (tipopermiso == "0101")
             {
@@ -138,7 +141,7 @@ namespace CapaDiseño.Mantenimientos
                 Btn_editar.Enabled = true;
                 Btn_borrar.Enabled = false;
                 Btn_consultar.Enabled = true;
-                desbloquear();
+                desbloqueartxt();
             }
             if (tipopermiso == "0011")
             {
@@ -147,7 +150,7 @@ namespace CapaDiseño.Mantenimientos
                 Btn_editar.Enabled = false;
                 Btn_borrar.Enabled = true;
                 Btn_consultar.Enabled = true;
-                desbloquear();
+                desbloqueartxt();
             }
             if (tipopermiso == "0001")
             {

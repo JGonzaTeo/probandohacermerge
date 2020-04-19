@@ -24,7 +24,7 @@ namespace CapaDiseño.Mantenimientos
         string smacAddresses;
         string suser;
 	string tipopermiso;
-	tipopermiso=permiso;
+	
                   
         public void obtenerip()
         {
@@ -48,7 +48,7 @@ namespace CapaDiseño.Mantenimientos
             }
         }
 
-        public Frm_MantCurriculum(String susuario)
+        public Frm_MantCurriculum(String susuario, String permiso)
         {
 
             InitializeComponent();
@@ -56,6 +56,7 @@ namespace CapaDiseño.Mantenimientos
             obtenerip();
             suser = susuario;
 	    bloqueartxt();
+            tipopermiso = permiso;
             /*------------------------*/
             Btn_guardar.Enabled = false;
             Btn_editar.Enabled = false;
@@ -134,7 +135,7 @@ public void permisos()
                 Btn_editar.Enabled = true;
                 Btn_borrar.Enabled = true;
                 Btn_consultar.Enabled = true;
-                desbloquear();
+                desbloqueartxt();
             }
             if (tipopermiso == "1001")
             {
@@ -143,7 +144,7 @@ public void permisos()
                 Btn_editar.Enabled = false;
                 Btn_borrar.Enabled = false;
                 Btn_consultar.Enabled = true;
-                desbloquear();
+                desbloqueartxt();
             }
             if (tipopermiso == "0101")
             {
@@ -152,7 +153,7 @@ public void permisos()
                 Btn_editar.Enabled = true;
                 Btn_borrar.Enabled = false;
                 Btn_consultar.Enabled = true;
-                desbloquear();
+                desbloqueartxt();
             }
             if (tipopermiso == "0011")
             {
@@ -161,7 +162,7 @@ public void permisos()
                 Btn_editar.Enabled = false;
                 Btn_borrar.Enabled = true;
                 Btn_consultar.Enabled = true;
-                desbloquear();
+                desbloqueartxt();
             }
             if (tipopermiso == "0001")
             {

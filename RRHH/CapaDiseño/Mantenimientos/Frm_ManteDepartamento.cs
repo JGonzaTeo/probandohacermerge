@@ -22,7 +22,7 @@ namespace CapaDiseño.Mantenimientos
         string scampo;
         string suser;
 	string tipopermiso;
-	tipopermiso=permiso;
+	
 
         string slocalIP;
         string smacAddresses;
@@ -49,7 +49,7 @@ namespace CapaDiseño.Mantenimientos
         }
 
 
-        public Frm_ManteDepartamento(String susuario)
+        public Frm_ManteDepartamento(String susuario, String permiso)
         {
             InitializeComponent();
             scampo = logic.siguiente("departamentos", "pkcodigodepto");
@@ -57,12 +57,14 @@ namespace CapaDiseño.Mantenimientos
             obtenerip();
             suser = susuario;
 	    Txt_Cod.Text = scampo;
+            bloqueartxt();
   		/*------------------------*/
             Btn_guardar.Enabled = false;
             Btn_editar.Enabled = false;
             Btn_borrar.Enabled = false;
 	    Btn_consultar.Enabled = false;
             /*------------------------*/
+            tipopermiso = permiso;
         }
 
 	 public void bloqueartxt()
@@ -84,7 +86,7 @@ namespace CapaDiseño.Mantenimientos
         {
             txt_descripcion.Text = "";
             Txt_Cod.Text = "";
-            Txt_nombre.Txt = "";
+            Txt_nombre.Text = "";
         }
 
 public void permisos()
@@ -96,7 +98,7 @@ public void permisos()
                 Btn_editar.Enabled = true;
                 Btn_borrar.Enabled = true;
                 Btn_consultar.Enabled = true;
-                desbloquear();
+                desbloqueartxt();
             }
             if (tipopermiso == "1001")
             {
@@ -105,7 +107,7 @@ public void permisos()
                 Btn_editar.Enabled = false;
                 Btn_borrar.Enabled = false;
                 Btn_consultar.Enabled = true;
-                desbloquear();
+                desbloqueartxt();
             }
             if (tipopermiso == "0101")
             {
@@ -114,7 +116,7 @@ public void permisos()
                 Btn_editar.Enabled = true;
                 Btn_borrar.Enabled = false;
                 Btn_consultar.Enabled = true;
-                desbloquear();
+                desbloqueartxt();
             }
             if (tipopermiso == "0011")
             {
@@ -123,7 +125,7 @@ public void permisos()
                 Btn_editar.Enabled = false;
                 Btn_borrar.Enabled = true;
                 Btn_consultar.Enabled = true;
-                desbloquear();
+                desbloqueartxt();
             }
             if (tipopermiso == "0001")
             {
