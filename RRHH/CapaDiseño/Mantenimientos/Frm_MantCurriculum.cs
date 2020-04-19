@@ -56,17 +56,18 @@ namespace CapaDiseño.Mantenimientos
             obtenerip();
             suser = susuario;
 	    bloqueartxt();
-
-        }
-
- public void bloqueartxt()
-        {
             /*------------------------*/
             Btn_guardar.Enabled = false;
             Btn_editar.Enabled = false;
             Btn_borrar.Enabled = false;
 	    Btn_consultar.Enabled=false;
             /*------------------------*/
+
+        }
+
+ public void bloqueartxt()
+        {
+
             chc_primaria.Enabled = false;
             chc_secundaria.Enabled = false;
             chc_bachillerato.Enabled = false;
@@ -85,12 +86,7 @@ namespace CapaDiseño.Mantenimientos
         }
         public void desbloqueartxt()
         {
-            /*------------------------*/
-            Btn_guardar.Enabled = true;
-            Btn_editar.Enabled = true;
-            Btn_borrar.Enabled = true;
-	    Btn_consultar.Enabled=true;
-            /*------------------------*/            
+          
            chc_primaria.Enabled = true;
             chc_secundaria.Enabled = true;
             chc_bachillerato.Enabled = true;

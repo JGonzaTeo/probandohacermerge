@@ -32,6 +32,12 @@ namespace CapaDiseño.Mantenimientos
             Cbo_Estado.Items.Add("Activo");
             Cbo_Estado.Items.Add("Inactivo");
             suser = usuario;
+	     /*------------------------*/
+            Btn_guardar.Enabled = false;
+            Btn_editar.Enabled = false;
+            Btn_borrar.Enabled = false;
+	    Btn_consultar.Enabled = true;
+            /*------------------------*/
 
         }
 
@@ -74,11 +80,7 @@ namespace CapaDiseño.Mantenimientos
 
         public void bloqueartxt()
         {
-            /*------------------------*/
-            Btn_guardar.Enabled = false;
-            Btn_editar.Enabled = false;
-            Btn_borrar.Enabled = false;
-            /*------------------------*/
+           
 
             Txt_Codigo.Enabled = false;
             Txt_Nombre.Enabled = false;
@@ -90,11 +92,7 @@ namespace CapaDiseño.Mantenimientos
         }
         public void desbloqueartxt()
         {
-            /*------------------------*/
-            Btn_guardar.Enabled = true;
-            Btn_editar.Enabled = true;
-            Btn_borrar.Enabled = true;
-            /*------------------------*/
+           
             Txt_Codigo.Enabled = true;
             Txt_Nombre.Enabled = true;
             Txt_Descripcion.Enabled = true;
@@ -111,6 +109,54 @@ namespace CapaDiseño.Mantenimientos
             Txt_Plazo.Text = "";
             Txt_Puntaje.Text = "";
             Cbo_Estado.Text = "";
+        }
+	
+	public void permisos()
+        {
+            if (tipopermiso == "1111")
+            {
+                //todos
+                Btn_guardar.Enabled = true;
+                Btn_editar.Enabled = true;
+                Btn_borrar.Enabled = true;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "1001")
+            {
+                //Guardar
+                Btn_guardar.Enabled = true;
+                Btn_editar.Enabled = false;
+                Btn_borrar.Enabled = false;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "0101")
+            {
+                //modificar
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = true;
+                Btn_borrar.Enabled = false;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "0011")
+            {
+                //eliminar
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = false;
+                Btn_borrar.Enabled = true;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "0001")
+            {
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = false;
+                Btn_borrar.Enabled = false;
+                Btn_ingresar.Enabled = false;
+                Btn_consultar.Enabled = true;
+            }
         }
 
         private void Btn_consultar_Click(object sender, EventArgs e)
@@ -191,7 +237,7 @@ namespace CapaDiseño.Mantenimientos
 
         private void Btn_ingresar_Click(object sender, EventArgs e)
         {
-            desbloqueartxt();
+            permisos();
         }
     }
 }

@@ -601,7 +601,7 @@ namespace CapaDiseño
         }
 
         bool ventanaDepartamentos = false;
-        Frm_ManteDepartamento departamento = new Frm_ManteDepartamento("");
+        Frm_ManteDepartamento departamento = new Frm_ManteDepartamento("","");
         private void departamentosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is Frm_ManteDepartamento);
@@ -609,7 +609,7 @@ namespace CapaDiseño
             {
                 if (frmC == null)
                 {
-                    departamento = new Frm_ManteDepartamento(susuario);
+                    departamento = new Frm_ManteDepartamento(susuario,tipopermiso);
                 }
 
                 departamento.MdiParent = this;
@@ -664,7 +664,7 @@ namespace CapaDiseño
         }
 
         bool Frm_Metas = false;
-        Frm_MantMeta meta = new Frm_MantMeta("");
+        Frm_MantMeta meta = new Frm_MantMeta("","");
         private void MetasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is Frm_MantMeta);
@@ -672,7 +672,7 @@ namespace CapaDiseño
             {
                 if (frmC == null)
                 {
-                    meta = new Frm_MantMeta(susuario);
+                    meta = new Frm_MantMeta(susuario,tipopermiso);
                 }
 
                 meta.MdiParent = this;

@@ -21,6 +21,8 @@ namespace CapaDiseño.Mantenimientos
         Logica logic = new Logica();
         string scampo;
         string suser;
+	string tipopermiso;
+	tipopermiso=permiso;
 
         string slocalIP;
         string smacAddresses;
@@ -51,14 +53,88 @@ namespace CapaDiseño.Mantenimientos
         {
             InitializeComponent();
             scampo = logic.siguiente("departamentos", "pkcodigodepto");
-            Txt_Cod.Text = scampo;
+            
+            obtenerip();
+            suser = susuario;
+	    Txt_Cod.Text = scampo;
+  		/*------------------------*/
+            Btn_guardar.Enabled = false;
+            Btn_editar.Enabled = false;
+            Btn_borrar.Enabled = false;
+	    Btn_consultar.Enabled = false;
+            /*------------------------*/
+        }
+
+	 public void bloqueartxt()
+        {
+          
             txt_descripcion.Enabled = false;
             Txt_Cod.Enabled = false;
             Txt_nombre.Enabled = false;
-
-            obtenerip();
-            suser = susuario;
         }
+        public void desbloqueartxt()
+        {           
+      		
+            txt_descripcion.Enabled = true;
+            Txt_Cod.Enabled = true;
+            Txt_nombre.Enabled = true;
+        }
+
+        public void limpiar()
+        {
+            txt_descripcion.Text = "";
+            Txt_Cod.Text = "";
+            Txt_nombre.Txt = "";
+        }
+
+public void permisos()
+        {
+            if (tipopermiso == "1111")
+            {
+                //todos
+                Btn_guardar.Enabled = true;
+                Btn_editar.Enabled = true;
+                Btn_borrar.Enabled = true;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "1001")
+            {
+                //Guardar
+                Btn_guardar.Enabled = true;
+                Btn_editar.Enabled = false;
+                Btn_borrar.Enabled = false;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "0101")
+            {
+                //modificar
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = true;
+                Btn_borrar.Enabled = false;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "0011")
+            {
+                //eliminar
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = false;
+                Btn_borrar.Enabled = true;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "0001")
+            {
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = false;
+                Btn_borrar.Enabled = false;
+                Btn_ingresar.Enabled = false;
+                Btn_consultar.Enabled = true;
+            }
+        }
+
 
         private void btn_minimizar_Click(object sender, EventArgs e)
         {
@@ -72,8 +148,7 @@ namespace CapaDiseño.Mantenimientos
 
         private void Btn_ingresar_Click(object sender, EventArgs e)
         {
-            txt_descripcion.Enabled = true;
-            Txt_nombre.Enabled = true;
+          permisos();
         }
 
         private void Btn_editar_Click(object sender, EventArgs e)
@@ -85,7 +160,7 @@ namespace CapaDiseño.Mantenimientos
             Txt_nombre.Text = "";
             txt_descripcion.Text = "";
             logic.bitacora("0", slocalIP, smacAddresses, suser, "RRHH", DateTime.Now.ToString("G"), "Modificar", this.GetType().Name);
-
+	    limpiar();
         }
 
         private void Btn_guardar_Click(object sender, EventArgs e)
@@ -97,7 +172,7 @@ namespace CapaDiseño.Mantenimientos
             Txt_nombre.Text = "";
             txt_descripcion.Text = "";
             logic.bitacora("0", slocalIP, smacAddresses, suser, "RRHH", DateTime.Now.ToString("G"), "Guardar", this.GetType().Name);
-
+	    limpiar();
         }
 
         private void Btn_borrar_Click(object sender, EventArgs e)
@@ -109,7 +184,7 @@ namespace CapaDiseño.Mantenimientos
             Txt_nombre.Text = "";
             txt_descripcion.Text = "";
             logic.bitacora("0", slocalIP, smacAddresses, suser, "RRHH", DateTime.Now.ToString("G"), "Eliminar", this.GetType().Name);
-
+	    limpiar();
         }
 
         private void Btn_consultar_Click(object sender, EventArgs e)
