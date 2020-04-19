@@ -23,8 +23,8 @@ namespace CapaDiseño.Mantenimientos
         string smacAddresses;
         string suser;
         string scampo;
-
-
+	string tipopermiso;
+	tipopermiso=permiso;
         public void obtenerip()
         {
             IPHostEntry host;
@@ -54,17 +54,95 @@ namespace CapaDiseño.Mantenimientos
 
             Cbo_Estado.Items.Add("Activo");
             Cbo_Estado.Items.Add("Inactivo");
-
+            bloqueartxt();
+	    scampo = logic.siguiente("mediodecomunicacion", "pkmediodecomunicacion");
+            Txt_Codigo.Text = scampo;
+        }
+	public void bloqueartxt()
+        {
+            /*------------------------*/
+            Btn_guardar.Enabled = false;
+            Btn_editar.Enabled = false;
+            Btn_borrar.Enabled = false;
+            /*------------------------*/
             Txt_Codigo.Enabled = false;
             Cbo_Contrato.Enabled = false;
             Cbo_Estado.Enabled = false;
             Cbo_Mes.Enabled =  false;
             Cbo_Proyecto.Enabled = false;
-
-            scampo = logic.siguiente("mediodecomunicacion", "pkmediodecomunicacion");
-            Txt_Codigo.Text = scampo;
         }
+        public void desbloqueartxt()
+        {
+            /*------------------------*/
+            Btn_guardar.Enabled = true;
+            Btn_editar.Enabled = true;
+            Btn_borrar.Enabled = true;
+            /*------------------------*/            
+            Txt_Codigo.Enabled = true;
+            Cbo_Contrato.Enabled = true;
+            Cbo_Estado.Enabled = true;
+            Cbo_Mes.Enabled = true;
+            Cbo_Proyecto.Enabled = true;
 
+            Cbo_estado.Enabled = true;
+        }
+        public void limpiar()
+        {
+            Txt_IdP.Text = " ";
+            Txt_nombre.Text = " ";
+            Txt_Direccion.Text = " ";
+            Txt_Telefono.Text = " ";
+            Txt_Email.Text = " ";
+            Txt_Nit.Text = " ";
+            Cbo_estado.Text = " ";
+        }
+	public void permisos()
+        {
+            if (tipopermiso == "1111")
+            {
+                //todos
+                Btn_guardar.Enabled = true;
+                Btn_editar.Enabled = true;
+                Btn_borrar.Enabled = true;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "1001")
+            {
+                //Guardar
+                Btn_guardar.Enabled = true;
+                Btn_editar.Enabled = false;
+                Btn_borrar.Enabled = false;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "0101")
+            {
+                //modificar
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = true;
+                Btn_borrar.Enabled = false;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "0011")
+            {
+                //eliminar
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = false;
+                Btn_borrar.Enabled = true;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "0001")
+            {
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = false;
+                Btn_borrar.Enabled = false;
+                Btn_ingresar.Enabled = false;
+                Btn_consultar.Enabled = true;
+            }
+        }
         private void Frm_MantTipoContratacion_Load(object sender, EventArgs e)
         {
 
@@ -115,11 +193,7 @@ namespace CapaDiseño.Mantenimientos
 
         private void Btn_ingresar_Click(object sender, EventArgs e)
         {
-            Txt_Codigo.Enabled = true;
-            Cbo_Contrato.Enabled = true;
-            Cbo_Estado.Enabled = true;
-            Cbo_Mes.Enabled = true;
-            Cbo_Proyecto.Enabled = true;
+            permisos();
         }
 
         private void Btn_editar_Click(object sender, EventArgs e)

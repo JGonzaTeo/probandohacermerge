@@ -475,7 +475,7 @@ namespace CapaDiseño
         }
 
         bool ventanacontrato = false;
-        Frm_MantTipoContratacion contrato = new Frm_MantTipoContratacion("");
+        Frm_MantTipoContratacion contrato = new Frm_MantTipoContratacion("","");
         private void TipoDeContratoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form frmC = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is Frm_MantEmpleado);
@@ -483,7 +483,7 @@ namespace CapaDiseño
             {
                 if (frmC == null)
                 {
-                    contrato = new Frm_MantTipoContratacion(susuario);
+                    contrato = new Frm_MantTipoContratacion(susuario,tipopermiso);
                 }
 
                 contrato.MdiParent = this;
