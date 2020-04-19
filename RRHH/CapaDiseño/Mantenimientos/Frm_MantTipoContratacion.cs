@@ -24,7 +24,7 @@ namespace CapaDiseño.Mantenimientos
         string suser;
         string scampo;
 	string tipopermiso;
-	tipopermiso=permiso;
+	 
         public void obtenerip()
         {
             IPHostEntry host;
@@ -62,6 +62,7 @@ namespace CapaDiseño.Mantenimientos
             Btn_editar.Enabled = false;
             Btn_borrar.Enabled = false;
             /*------------------------*/
+            tipopermiso = permiso;
         }
 	public void bloqueartxt()
         {

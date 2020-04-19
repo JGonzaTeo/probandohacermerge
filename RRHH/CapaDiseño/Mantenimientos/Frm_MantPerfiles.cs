@@ -26,6 +26,7 @@ namespace CapaDiseño.Mantenimientos
         string slocalIP;
         string smacAddresses;
         string suser;
+        string tipopermiso;
         public void obtenerip()
         {
             IPHostEntry host;
@@ -47,11 +48,37 @@ namespace CapaDiseño.Mantenimientos
                 }
             }
         }
-        public Frm_MantPerfiles(String susuario)
+        public Frm_MantPerfiles(String susuario,String permiso)
         {
             InitializeComponent();
             scampo = logic.siguiente("perfil_encabezado", "pkcodperfil");
             Txt_Cod.Text = scampo;
+            Btn_guardar.Enabled = false;
+            Btn_editar.Enabled = false;
+            Btn_borrar.Enabled = false;
+            Btn_consultar.Enabled = false;
+            bloquear();
+            obtenerip();
+            suser = susuario;
+            tipopermiso = permiso;
+        }
+
+        public void desbloquear()
+        {
+            //habilita campos para ingreso de datos
+            chc_primaria.Enabled = true;
+            chc_secundaria.Enabled = true;
+            chc_bachillerato.Enabled = true;
+            chc_Estudiante.Enabled = true;
+            chc_Graduado.Enabled = true;
+            chc_Cursos.Enabled = true;
+            txt_extras.Enabled = true;
+            Txt_Cod.Enabled = true;
+            Txt_puesto.Enabled = true;
+        }
+
+        public void bloquear()
+        {
             chc_primaria.Enabled = false;
             chc_secundaria.Enabled = false;
             chc_bachillerato.Enabled = false;
@@ -61,8 +88,67 @@ namespace CapaDiseño.Mantenimientos
             txt_extras.Enabled = false;
             Txt_Cod.Enabled = false;
             Txt_puesto.Enabled = false;
-            obtenerip();
-            suser = susuario;
+        }
+
+        public void limpiar()
+        {
+            chc_primaria.Text = "";
+            chc_secundaria.Text = "";
+            chc_bachillerato.Text = "";
+            chc_Estudiante.Text = "";
+            chc_Graduado.Text = "";
+            chc_Cursos.Text = "";
+            txt_extras.Text = "";
+            Txt_Cod.Text = "";
+            Txt_puesto.Text = "";
+        }
+
+        public void permisos()
+        {
+            if (tipopermiso == "1111")
+            {
+                //todos
+                Btn_guardar.Enabled = true;
+                Btn_editar.Enabled = true;
+                Btn_borrar.Enabled = true;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "1001")
+            {
+                //Guardar
+                Btn_guardar.Enabled = true;
+                Btn_editar.Enabled = false;
+                Btn_borrar.Enabled = false;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "0101")
+            {
+                //modificar
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = true;
+                Btn_borrar.Enabled = false;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "0011")
+            {
+                //eliminar
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = false;
+                Btn_borrar.Enabled = true;
+                Btn_consultar.Enabled = true;
+                desbloquear();
+            }
+            if (tipopermiso == "0001")
+            {
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = false;
+                Btn_borrar.Enabled = false;
+                Btn_ingresar.Enabled = false;
+                Btn_consultar.Enabled = true;
+            }
         }
 
         private void btn_buscarCreador_Click(object sender, EventArgs e)
@@ -82,15 +168,7 @@ namespace CapaDiseño.Mantenimientos
 
         private void Btn_ingresar_Click(object sender, EventArgs e)
         {
-            chc_primaria.Enabled = true;
-            chc_secundaria.Enabled = true;
-            chc_bachillerato.Enabled = true;
-            chc_Estudiante.Enabled = true;
-            chc_Graduado.Enabled = true;
-            chc_Cursos.Enabled = true;
-            txt_extras.Enabled = true;
-            Txt_Cod.Enabled = true;
-            Txt_puesto.Enabled = true;
+            permisos();
         }
 
         private void btn_minimizar_Click(object sender, EventArgs e)
@@ -148,7 +226,7 @@ namespace CapaDiseño.Mantenimientos
             OdbcDataReader perfil = logic.InsertarPerfil(Txt_Cod.Text, Txt_puesto.Text, p2, s2, b2, es2, g2, c2, txt_extras.Text);
             MessageBox.Show("Perfil Creado.");
             logic.bitacora("0", slocalIP, smacAddresses, suser, "RRHH", DateTime.Now.ToString("G"), "Guardar", this.GetType().Name);
-
+            limpiar();
         }
 
         private void Frm_MantPerfiles_Load(object sender, EventArgs e)
@@ -186,7 +264,7 @@ namespace CapaDiseño.Mantenimientos
             OdbcDataReader perfil = logic.modificarPerfil(Txt_Cod.Text, Txt_puesto.Text, p2, s2, b2, es2, g2, c2, txt_extras.Text);
             MessageBox.Show("Datos modificados correctamente.");
             logic.bitacora("0", slocalIP, smacAddresses, suser, "RRHH", DateTime.Now.ToString("G"), "Modificar", this.GetType().Name);
-
+            limpiar();
         }
 
         private void Btn_borrar_Click(object sender, EventArgs e)
@@ -194,7 +272,7 @@ namespace CapaDiseño.Mantenimientos
             OdbcDataReader perfil = logic.eliminarPerfil(Txt_Cod.Text);
             MessageBox.Show("Eliminado Correctamentee.");
             logic.bitacora("0", slocalIP, smacAddresses, suser, "RRHH", DateTime.Now.ToString("G"), "Eliminar", this.GetType().Name);
-
+            limpiar();
         }
 
         private void Btn_Ayuda_Click(object sender, EventArgs e)
